@@ -21,7 +21,7 @@ const Hero = () => {
         <div className="relative w-full lg:h-screen">
           <div
             ref={videoContainerRef}
-            className="w-full h-[213px] rounded-lg lg:absolute lg:-top-24 lg:left-6 lg:w-36 lg:h-24"
+            className="w-full h-full rounded-lg"
           >
             <video
               ref={videoRef}

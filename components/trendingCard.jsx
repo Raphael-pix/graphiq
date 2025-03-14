@@ -1,46 +1,10 @@
 "use client"
 
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 
-
-gsap.registerPlugin(ScrollTrigger);
 
 const TrendingCard = ({ image, title, category, isSmaller, index }) => {
   const trendingCardRef = useRef([]);
-  useEffect(() => {
-    if (!trendingCardRef.current) return;
-    trendingCardRef.current.forEach((el, index) => {
-      let direction = 0;
-      const columnIndex = parseInt(el.getAttribute("data-column"), 10) || 0;
-      if (columnIndex === 0) {
-        direction = -180;
-      } else if (columnIndex === 1) {
-        direction = 0;
-      } else if (columnIndex === 2) {
-        direction = 180;
-      }
-
-      gsap.fromTo(
-        el,
-        { x: direction, y: 90, opacity: 0, transformOrigin: "center center" },
-        {
-          x: 0,
-          y: 0,
-          opacity: 1,
-          duration: 1.5,
-          ease: "power3.inOut",
-          scrollTrigger: {
-            trigger: el,
-            start: "top 90%",
-            end: "top center",
-            scrub: 1,
-          },
-        }
-      );
-    });
-  }, [trendingCardRef]);
   return (
     <div
       ref={(el) => {

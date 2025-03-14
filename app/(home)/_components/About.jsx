@@ -32,12 +32,10 @@ export default function About() {
 
   const handleNext = () => {
     setCurrentFactIndex((prev) => (prev + 1) % facts.length);
-    startTimerAnimation();
   };
 
   const handlePrev = () => {
     setCurrentFactIndex((prev) => (prev - 1 + facts.length) % facts.length);
-    startTimerAnimation();
   };
 
   return (

@@ -57,26 +57,6 @@ const ListItem = ({ project, index }) => {
           />
         </div>
       </div>
-
-      {!isMobile && hoveredProject !== null && (
-        <div
-          className="fixed pointer-events-none z-10 transform -translate-x-1/2 -translate-y-1/2 transition-opacity duration-200 shadow-lg"
-          style={{
-            left: mousePosition.x,
-            top: mousePosition.y,
-            width: "300px",
-            opacity: 1,
-          }}
-        >
-          <Image
-            src={project.imageUrl}
-            alt={project.title}
-            width={300}
-            height={300}
-            className="w-full rounded-md object-cover"
-          />
-        </div>
-      )}
     </div>
   );
 };

@@ -4,7 +4,6 @@ import NavBar from '@/components/navbar';
 import HeroSection from './_components/Hero';
 import WhenSection from './_components/When';
 import VideoSection from './_components/Video';
-import CustomCursor from '@/components/customCursor';
 import WhySection from './_components/Why';
 import ValuesSection from './_components/Values';
 import TestimonialsSection from './_components/Testimonials';
@@ -14,7 +13,6 @@ import Services from '@/components/Services';
 const ServicesPage = () => {
   return (
     <main className="relative min-h-screen">
-      <CustomCursor/>
       <NavBar />
       <HeroSection/>
       <WhenSection/>

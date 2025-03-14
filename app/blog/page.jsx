@@ -5,7 +5,6 @@ import Footer from "@/components/Footer";
 import NavBar from "@/components/navbar";
 import Header from "./_components/Header";
 import AllProjects from "./_components/All";
-import CustomCursor from "@/components/customCursor";
 import ProjectStoriesSection from "./_components/Stories";
 import KnowledgeSection from "./_components/Knowledge";
 
@@ -40,7 +39,6 @@ const BlogPage = () => {
 
   return (
     <main className="relative min-h-screen">
-      <CustomCursor/>
       <NavBar />
       <Header navItems={navItems} handleItemClick={handleItemClick} />
       <div>{ActiveComponent}</div>

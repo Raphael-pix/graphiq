@@ -39,76 +39,14 @@ const TestimonialsSection = () => {
   const timelineRef = useRef(null);
   const timerRef = useRef(null);
 
-  useEffect(() => {
-    timelineRef.current = gsap.timeline({ repeat: -1 });
-    startTimerAnimation();
-    return () => {
-      if (timelineRef.current) {
-        timelineRef.current.kill();
-      }
-    };
-  }, []);
-
-  useEffect(() => {
-    animateTestimonial();
-  }, [currentIndex]);
-
-  const animateTestimonial = () => {
-    gsap.fromTo(
-      textRef.current,
-      { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }
-    );
-    gsap.fromTo(
-      imageRef.current,
-      { opacity: 0, scale: 0.8 },
-      { opacity: 1, scale: 1, duration: 0.6, ease: "power2.out" }
-    );
-    gsap.fromTo(
-      nameRef.current,
-      { opacity: 0, x: -10 },
-      { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }
-    );
-    gsap.fromTo(
-      titleRef.current,
-      { opacity: 0, x: 10 },
-      { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }
-    );
-  };
-
-  const startTimerAnimation = () => {
-    if (timerRef.current && timelineRef.current) {
-      // Clear any previous timeline animations
-      timelineRef.current.clear();
-      // Set initial state of the timer
-      timelineRef.current
-        .set(timerRef.current, {
-          strokeDasharray: "283 283", // full circumference
-          strokeDashoffset: 283, // start with full offset
-          rotation: -90, // starting rotation position (top-left)
-          transformOrigin: "50% 50%", // ensure the transform happens around the center
-        })
-        .to(timerRef.current, {
-          strokeDashoffset: 0, // end the stroke animation to 0
-          duration: 10, // set the timer duration to 30 seconds
-          ease: "none", // no easing, it should be a linear animation
-          onComplete: () => {
-            handleNext();
-          },
-        });
-    }
-  };
-
   const handleNext = () => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-    startTimerAnimation();
   };
 
   const handlePrev = () => {
     setCurrentIndex(
       (prev) => (prev - 1 + testimonials.length) % testimonials.length
     );
-    startTimerAnimation();
   };
 
   return (

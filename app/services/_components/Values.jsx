@@ -33,39 +33,6 @@ const ValuesSection = () => {
   const sectionRef = useRef(null);
   const metricRefs = useRef([]);
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      metricRefs.current.forEach((el, index) => {
-        const { value } = metrics[index];
-
-        // Extract numeric and suffix part
-        const numericValue = parseFloat(value.replace(/[^\d.]/g, ""));
-        const suffix = value.replace(/[\d.]/g, "");
-
-        gsap.fromTo(
-          el,
-          { textContent: 0 },
-          {
-            textContent: numericValue,
-            duration: 2,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: el,
-              start: "top 80%", // Trigger when 80% of the element is in view
-              once: true, // Ensures it plays once
-            },
-            snap: { textContent: 1 }, // Rounds numbers smoothly
-            onUpdate: function () {
-              el.innerHTML = Math.round(this.targets()[0].textContent) + suffix;
-            },
-          }
-        );
-      });
-    }, sectionRef);
-
-    return () => ctx.revert(); // Cleanup on unmount
-  }, []);
-
   return (
     <section
       ref={sectionRef}

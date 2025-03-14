@@ -4,7 +4,6 @@ import React, { useEffect } from "react";
 import AnimatedButton from "@/components/animatedButton";
 import { useRouter } from "next/navigation";
 import SmileyFace from "@/components/smiley";
-import CustomCursor from "@/components/customCursor";
 import NavBar from "@/components/navbar";
 
 const Custom404 = () => {
@@ -16,7 +15,6 @@ const Custom404 = () => {
 
   return (
     <main>
-      <CustomCursor />
       <NavBar/>
       <div className="flex flex-col items-center justify-center min-h-screen px-4">
         <div className="text-center">

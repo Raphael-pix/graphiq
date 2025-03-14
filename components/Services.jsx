@@ -14,36 +14,6 @@ const Services = () => {
   const cardsRef = useRef([]);
   const pathname = usePathname();
 
-  useEffect(() => {
-    const mm = gsap.matchMedia();
-
-    mm.add("(min-width: 1024px)", () => {
-      // Only run animations on screens larger than 1024px (lg breakpoint)
-      cardsRef.current.forEach((card, i) => {
-        if (!card) return;
-
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: card,
-            start: "top bottom",
-            end: "bottom center",
-            scrub: true,
-          },
-        });
-
-        const affectedCards = cardsRef.current.slice(i + 1);
-        tl.to(affectedCards, {
-          yPercent: -50 * (i + 1),
-          duration: 2,
-          ease: "none",
-        });
-      });
-
-      return () => ScrollTrigger.getAll().forEach((st) => st.kill()); // Cleanup on unmount
-    });
-
-    return () => mm.revert();
-  }, []);
 
   return (
     <div className="py-4">
